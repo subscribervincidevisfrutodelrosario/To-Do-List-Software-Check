@@ -1,0 +1,22 @@
+name: Python Code Quality Check
+
+on: [push]
+
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Pylint
+      run: pip install pylint
+
+    - name: Run Pylint
+      run: pylint todo.py
